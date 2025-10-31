@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import ContactInfo from '@/components/contact/ContactInfo';
-import ReservationForm from '@/components/contact/ReservationForm';
+import ContactForm from '@/components/contact/ContactForm';
+import Map from '@/components/contact/Map';
 
 export default function ContactPage() {
   return (
@@ -25,6 +26,9 @@ export default function ContactPage() {
           <h1 className="text-5xl md:text-6xl font-display font-bold text-white mb-4">
             Contact Us
           </h1>
+          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+            We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          </p>
         </div>
       </section>
 
@@ -35,23 +39,38 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Reservation Form Section */}
-      <section className="py-16 bg-charcoal-900">
+      {/* Contact Form Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-4">
-                Online Reservation
+              <h2 className="text-4xl md:text-5xl font-display font-bold text-charcoal-800 mb-4">
+                Send Us a Message
               </h2>
-              <p className="text-xl text-gray-300">
-                Fill out the details of your reservation
+              <p className="text-xl text-charcoal-600">
+                Have a question or feedback? Fill out the form below
               </p>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-large p-8 md:p-12">
-              <ReservationForm />
+            <div className="bg-warm-white rounded-2xl shadow-large p-8 md:p-12">
+              <ContactForm />
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section className="py-16 bg-warm-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-charcoal-800 mb-4">
+              Find Us
+            </h2>
+            <p className="text-xl text-charcoal-600">
+              Located along Mama Ngina Street, Thika Town Centre
+            </p>
+          </div>
+          <Map />
         </div>
       </section>
     </>

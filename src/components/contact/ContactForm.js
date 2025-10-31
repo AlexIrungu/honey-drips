@@ -1,20 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import Input from '@/components/ui/Input';
-import Select from '@/components/ui/Select';
-import TextArea from '@/components/ui/TextArea';
+import Input, { TextArea } from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Send } from 'lucide-react';
 
-export default function ReservationForm() {
+export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: '',
-    phone: '',
     email: '',
-    people: '1',
-    time: '',
-    date: '',
+    phone: '',
+    subject: '',
     message: '',
   });
 
@@ -34,7 +30,7 @@ export default function ReservationForm() {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch('/api/reservation', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -46,11 +42,9 @@ export default function ReservationForm() {
         setSubmitStatus('success');
         setFormData({
           name: '',
-          phone: '',
           email: '',
-          people: '1',
-          time: '',
-          date: '',
+          phone: '',
+          subject: '',
           message: '',
         });
       } else {
@@ -62,11 +56,6 @@ export default function ReservationForm() {
       setIsSubmitting(false);
     }
   };
-
-  const peopleOptions = Array.from({ length: 20 }, (_, i) => ({
-    value: (i + 1).toString(),
-    label: `${i + 1} ${i === 0 ? 'Person' : 'People'}`,
-  }));
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -81,52 +70,32 @@ export default function ReservationForm() {
         />
 
         <Input
+          label="Email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="john@example.com"
+          required
+        />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Input
           label="Phone"
           name="phone"
           type="tel"
           value={formData.phone}
           onChange={handleChange}
-          placeholder="(254) 724887599"
-          required
-        />
-      </div>
-
-      <Input
-        label="Email"
-        name="email"
-        type="email"
-        value={formData.email}
-        onChange={handleChange}
-        placeholder="john@example.com"
-      />
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <Select
-          label="People №"
-          name="people"
-          value={formData.people}
-          onChange={handleChange}
-          options={peopleOptions}
-          required
+          placeholder="+254 712 345 678"
         />
 
         <Input
-          label="Time"
-          name="time"
-          type="time"
-          value={formData.time}
+          label="Subject"
+          name="subject"
+          value={formData.subject}
           onChange={handleChange}
-          required
-        />
-
-        <Input
-          label="Date"
-          name="date"
-          type="date"
-          value={formData.date}
-          onChange={handleChange}
-          required
-          min={new Date().toISOString().split('T')[0]}
+          placeholder="General Inquiry"
         />
       </div>
 
@@ -135,14 +104,15 @@ export default function ReservationForm() {
         name="message"
         value={formData.message}
         onChange={handleChange}
-        placeholder="Any special requests or dietary requirements..."
-        rows={4}
+        placeholder="Tell us how we can help you..."
+        rows={6}
+        required
       />
 
       {submitStatus === 'success' && (
         <div className="bg-green-50 border-2 border-green-500 text-green-800 px-6 py-4 rounded-xl">
-          <p className="font-semibold">Reservation submitted successfully!</p>
-          <p className="text-sm">We'll contact you shortly to confirm your booking.</p>
+          <p className="font-semibold">Message sent successfully!</p>
+          <p className="text-sm">We'll get back to you as soon as possible.</p>
         </div>
       )}
 
@@ -159,15 +129,9 @@ export default function ReservationForm() {
         size="lg"
         disabled={isSubmitting}
         className="w-full"
+        icon={isSubmitting ? Loader2 : Send}
       >
-        {isSubmitting ? (
-          <>
-            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-            Submitting...
-          </>
-        ) : (
-          'Make Reservation'
-        )}
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </Button>
     </form>
   );

@@ -61,8 +61,8 @@ export default function Navbar() {
               </Link>
             ))}
             
-            <Button href="/contact" variant="primary" size="md">
-              Reservation
+            <Button href="/reservation" variant="primary" size="md">
+              Make a Reservation
             </Button>
           </div>
 
@@ -95,13 +95,13 @@ export default function Navbar() {
                 </Link>
               ))}
               <Button
-                href="/contact"
+                href="/reservation"
                 variant="primary"
                 size="md"
                 className="w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Reservation
+                Make a Reservation
               </Button>
             </div>
           </div>

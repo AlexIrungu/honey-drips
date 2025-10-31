@@ -8,6 +8,7 @@ export default function Footer() {
   const usefulLinks = [
     { name: 'Accommodation', href: '/accommodation' },
     { name: 'Menu', href: '/menu' },
+    { name: 'Reservation', href: '/reservation' },
     { name: 'FAQ', href: '/faq' },
   ];
 
@@ -149,7 +150,7 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="text-honey hover:text-honey-400 transition-colors"
               >
-                SPARQ eXperience
+                Alex Irungu
               </a>
             </p>
             <p className="text-gray-500 text-sm">
