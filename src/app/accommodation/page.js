@@ -29,12 +29,12 @@ export default function AccommodationPage() {
     },
     {
       icon: ShieldCheck,
-      title: 'Disinfectant-washed linen',
+      title: 'Sanitized Linen',
       description: 'Your safety is our priority',
     },
     {
       icon: Bath,
-      title: 'Private bathroom',
+      title: 'Private Bathroom',
       description: 'Modern facilities for your comfort',
     },
   ];
@@ -62,9 +62,9 @@ export default function AccommodationPage() {
             Accommodation That Suits Your Lifestyle
           </h1>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-            Discover a haven of peace and tranquility at Honey Drip Hotel, where comfort 
+            Discover a haven of peace and tranquility at Honey Drips Hotel, where comfort 
             meets simplicity. Our cozy rooms are equipped with all the amenities you may 
-            need, and you can enjoy your stay in Thika.
+            need for an enjoyable stay in Thika.
           </p>
         </div>
       </section>
@@ -72,6 +72,15 @@ export default function AccommodationPage() {
       {/* Amenities Section */}
       <section className="py-16 bg-warm-white">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-charcoal-800 mb-4">
+              Room Amenities
+            </h2>
+            <p className="text-xl text-charcoal-600 max-w-2xl mx-auto">
+              Every room is designed with your comfort in mind
+            </p>
+          </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             {amenities.map((amenity, index) => {
               const Icon = amenity.icon;
@@ -95,6 +104,15 @@ export default function AccommodationPage() {
           </div>
 
           {/* Room Cards */}
+          <div className="text-center mb-8">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-charcoal-800 mb-4">
+              Our Rooms
+            </h2>
+            <p className="text-xl text-charcoal-600 max-w-2xl mx-auto">
+              Choose the perfect room for your stay
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {roomData.map((room) => (
               <RoomCard 
